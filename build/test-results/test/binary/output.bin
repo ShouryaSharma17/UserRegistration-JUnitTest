@@ -1,0 +1,5 @@
+0Valid FirstName ^[A-Z]{1}[a-zA-Z]{2}[a-zA-Z]*$
+Please Enter Valid Email
+$Please Enter Valid Contact Number 
+0Valid Last Name ^[A-Z]{1}[a-zA-Z]{2}[a-zA-Z]*$
+OValid Password ^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$

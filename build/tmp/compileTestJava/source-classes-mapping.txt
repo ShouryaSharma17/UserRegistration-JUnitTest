@@ -1,0 +1,2 @@
+com/validuser/UserValidationTest.java
+ com.validuser.UserValidationTest
