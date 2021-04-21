@@ -1,45 +1,42 @@
-package com.validuser;
-
-import org.junit.Assert;
+package com.user;
+import static org.junit.Assert.assertEquals;
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.Before;
 import org.junit.Test;
-//import org.testng.annotations.Test;
-//import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith (Parameterized.class)
 
 public class UserValidationTest {
-    @Test
-    public void FirstName_WhenValid_ReturnTrue()
-    {
-        UserValidation userValidation= new UserValidation();
-        boolean result= userValidation.checkFirstName("Shourya");
-        Assert.assertTrue(result);
+    private String email;
+    private boolean expectedResult;
+    private UserValidationTest userValidation;
+
+    public UserValidationTest(String email, boolean expectedResult) {
+        super();
+        this.email = email;
+        this.expectedResult = expectedResult;
     }
-    @Test
-    public void LastName_WhenValid_ReturnTrue()
-        {
-            UserValidation userValidation= new UserValidation();
-            boolean result= userValidation.checkLastName("Sharma");
-            Assert.assertTrue(result);
+    @Before
+    public void initialize(){
+        userValidation = new UserValidationTest();
     }
-    @Test
-    public void Email_WhenValid_ReturnTrue()
+
+    @Parameterized.Parameters
+    public static Collection input()
     {
-        UserValidation userValidation= new UserValidation();
-        boolean result= userValidation.checkEmail("shourya@gmail.com");
-        Assert.assertTrue(result);
+        return Arrays.asList(new Object[][]{{"abc@yahoo.com",true},{"abc111@abc.com.au",true},{"abc-",false},{"abc.@gmail.com",false},{"abc123@.com",false}});
     }
+
     @Test
-    public void ContactNo_WhenValid_ReturnTrue()
+    public void TestUserValidation()
     {
-        UserValidation userValidation= new UserValidation();
-        boolean result= userValidation.checkContact("91 923456789");
-        Assert.assertTrue(result);
-    }
-    @Test
-    public void Password_WhenValid_ReturnTrue()
-    {
-        UserValidation userValidation= new UserValidation();
-        boolean result= userValidation.checkPassword("Ab8@rhsdf");
-        Assert.assertTrue(result);
+        System.out.println("Valid" +expectedResult);
+        boolean result= userValidation.checkEmail(email);
+        assertEquals(expectedResult, result);
     }
 
 }
+
