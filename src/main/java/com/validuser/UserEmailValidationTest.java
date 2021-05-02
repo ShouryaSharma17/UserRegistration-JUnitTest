@@ -1,5 +1,5 @@
-package com.user;
-import static org.junit.Assert.assertEquals;
+package com.validuser;
+import org.junit.Assert;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Before;
@@ -7,22 +7,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.testng.Assert.assertEquals;
+
 @RunWith (Parameterized.class)
 
-public class UserRegistrationTest {
+
+public class UserEmailValidationTest {
     private String email;
     private boolean expectedResult;
-    private UserRegistration userRegistration;
+    private UserEmailValidationTest userValidation;
 
-    public UserRegistrationTest(String email, boolean expectedResult) {
+    public UserEmailValidationTest(String email, boolean expectedResult) {
         super();
         this.email = email;
         this.expectedResult = expectedResult;
     }
-    @Before
-    public void initialize(){
-        userRegistration = new UserRegistration();
-    }
+//    @Before
+//    public void initialize(){
+//        userValidation = new UserEmailValidationTest(email);
+//    }
 
     @Parameterized.Parameters
     public static Collection input()
@@ -31,12 +34,12 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void TestUserValidation()
+    public void TestUserValidation() throws UserValidationException
     {
         System.out.println("Valid" +expectedResult);
-        boolean result= userRegistration.checkEmail(email);
+        boolean result= UserValidation.checkEmail(email);
         assertEquals(expectedResult, result);
     }
-
 }
+
 

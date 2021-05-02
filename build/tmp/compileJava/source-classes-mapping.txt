@@ -1,2 +1,6 @@
+com/validuser/UserEmailValidationTest.java
+ com.validuser.UserEmailValidationTest
 com/validuser/UserValidation.java
  com.validuser.UserValidation
+com/validuser/UserValidationException.java
+ com.validuser.UserValidationException
